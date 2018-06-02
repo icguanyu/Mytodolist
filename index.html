@@ -6,7 +6,6 @@
     <title>MyToDoList</title>
     <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="scss/style.css">
-
 </head>
 
 <body>
@@ -32,14 +31,20 @@
             <button class="send" type="button" @click="addTodo">新增</button>
         </div>
         <div class="contain">
-            <div class="tab"><span id="all" :class="{'active':visi=='all'}" @click="visi='all'">全部({{filter.length}})</span><span id="ing" :class="{'active':visi=='ing'}" @click="visi='ing'">進行中({{remain}})</span><span id="done" :class="{'active':visi=='done'}" @click="visi='done'">完成({{done}})</span></div>
+            <div class="tab">
+                <span id="all" :class="{'active':visi=='all'}" @click="visi='all'">全部({{todos.length}})</span>
+                <span id="ing" :class="{'active':visi=='ing'}" @click="visi='ing'">進行中({{remain}})</span>
+                <span id="done" :class="{'active':visi=='done'}" @click="visi='done'">完成({{done}})</span>
+            </div>
             <div class="main">
                 <ul>
                     <li v-for="(item,index) in filter" @dblclick="editTodo(item)">
                         <input type="checkbox" :id="item.id" v-model="item.completed" />
-                        <label :for="item.id">{{item.time}}  
-            <sapn class="checkmark"></sapn>
-          </label><span v-if="item.id !== cacheTodo.id">{{item.title}}</span>
+                        <label :for="item.id">
+                            {{item.time}}
+                            <sapn class="checkmark"></sapn>
+                        </label>
+                        <span v-if="item.id !== cacheTodo.id">{{item.title}}</span>
                         <input type="text" v-if="item.id==cacheTodo.id" v-model="cacheTitle" @keyup.esc="cancelEdit" @keyup.enter="doneEdit(item)" />
                         <div class="close" @click="removeTodo(index)"></div>
                     </li>
@@ -49,14 +54,8 @@
         <div class="clear"><span @click="clearAll">清除所有任務</span></div>
     </div>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js'></script>
-
-
-
+    <script src="js/vendor.js"></script>
     <script src="js/index.js"></script>
-
-
-
 
 </body>
 
