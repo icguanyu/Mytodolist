@@ -1,0 +1,311 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+html {
+  background: linear-gradient(180deg, #114B5F 75%, #113a48 20%, #3a6c7d);
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, p, span, ul, li {
+  padding: 0;
+  margin: 0;
+}
+
+.all {
+  position: relative;
+  background: #fff;
+  width: 760px;
+  padding: 40px 60px;
+  box-sizing: border-box;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  transition: .5s;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top .hello h1 {
+  width: 10em;
+  border-right: .05em solid;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 3s steps(10), insert 1s steps(1) infinite;
+  color: #546f89;
+}
+
+.top .today {
+  text-align: right;
+  color: #224772;
+  letter-spacing: 2px;
+  font-size: 14px;
+}
+
+.process {
+  padding: 25px 0;
+}
+
+.process h3 {
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #333;
+  text-align: center;
+}
+
+.process .bar_box {
+  margin: 5px 0;
+  width: 100%;
+  height: 20px;
+  border-radius: 4px;
+  background: #ccc;
+  position: relative;
+  overflow: hidden;
+}
+
+.process .bar_box p {
+  position: absolute;
+  left: 50%;
+  letter-spacing: 5px;
+  transform: translateX(-50%);
+  color: #fff;
+  z-index: 1;
+  font-size: 12px;
+}
+
+.process .bar_box .bar {
+  transition: .3s;
+  position: absolute;
+  left: 0;
+  width: 50%;
+  height: 20px;
+  background: #224772;
+}
+
+.enterTodos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.enterTodos .keyin {
+  padding: 0px 10px;
+  margin-right: 20px;
+  letter-spacing: 3px;
+  width: 100%;
+  border: none;
+  background: none;
+  font-size: 32px;
+  outline: none;
+  height: 40px;
+  font-weight: bold;
+  color: #999;
+}
+
+.enterTodos .keyin::placeholder {
+  color: #bbb;
+  font-family: 'Noto Sans TC';
+}
+
+.enterTodos .send {
+  font-family: 'Noto Sans TC';
+  position: relative;
+  outline: none;
+  font-size: 16px;
+  border-radius: 2px;
+  cursor: pointer;
+  width: 60px;
+  height: 40px;
+  border: none;
+  color: #000;
+  z-index: 0;
+  overflow: hidden;
+  transition: .3s;
+}
+
+.enterTodos .send:hover {
+  color: #fff;
+}
+
+.enterTodos .send:hover:before {
+  left: 0;
+}
+
+.enterTodos .send:before {
+  content: '';
+  transition: .3s;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  z-index: -1;
+  background: #224772;
+}
+
+.contain {
+  width: 100%;
+  margin: 20px 0;
+  box-shadow: 3px 3px 10px #ddd;
+}
+
+.contain .tab {
+  cursor: pointer;
+  display: flex;
+}
+
+.contain .tab span {
+  padding: 10px 40px;
+  transition: all .3s;
+}
+
+.contain .active {
+  color: #fff;
+  background: #224772;
+}
+
+.contain .main {
+  width: 100%;
+  height: 300px;
+  overflow: auto;
+  padding: 0px 20px;
+  box-sizing: border-box;
+  background: #f6f7f9;
+}
+
+.contain .main li {
+  position: relative;
+  padding: 20px 5px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+}
+
+.contain .main li:last-child {
+  border: none;
+}
+
+.contain .main li input[type="checkbox"] {
+  position: relative;
+  opacity: 0;
+}
+
+.contain .main li input[type="checkbox"]:checked ~ label > .checkmark {
+  border: 1px solid #224772;
+  background: #224772;
+}
+
+.contain .main li input[type="checkbox"]:checked ~ label > .checkmark:after {
+  display: block;
+}
+
+.contain .main li input[type="text"] {
+  outline: none;
+  border: 1px solid #ccc;
+  height: 30px;
+  border-radius: 3px;
+  padding: 0 10px;
+  font-size: 16px;
+}
+
+.contain .main li input[type="text"]:focus {
+  border: 2px solid #546f89;
+}
+
+.contain .main li label {
+  cursor: pointer;
+  margin: 0px 10px;
+  letter-spacing: 1px;
+  font-size: 9px;
+}
+
+.contain .main li .checkmark {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  position: absolute;
+  transition: .3s;
+  left: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.contain .main li .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.contain .main li span {
+  margin: 0px 10px;
+}
+
+.contain .main li .close {
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  width: 15px;
+  height: 15px;
+}
+
+.contain .main li .close:after, .contain .main li .close:before {
+  content: '';
+  background: #224772;
+  position: absolute;
+  width: 3px;
+  height: 100%;
+  left: 50%;
+}
+
+.contain .main li .close:after {
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.contain .main li .close:before {
+  transform: translateX(-50%) rotate(-45deg);
+}
+
+.clear span {
+  cursor: pointer;
+  font-size: 9px;
+  padding: 5px 10px;
+  color: #fff;
+  background: #ff6262;
+}
+
+@keyframes insert {
+  50% {
+    border-color: transparent;
+  }
+}
+
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+}
+/*# sourceMappingURL=style.css.map */

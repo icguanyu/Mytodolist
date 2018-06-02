@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MyToDoList</title>
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="scss/style.css">
+
+</head>
+
+<body>
+    <div class="all" id="app">
+        <div class="top">
+            <div class="hello">
+                <h1>Ｈｅｌｌｏ！冒險者！</h1>
+            </div>
+            <div class="today">
+                <p>今天是{{today}}</p>
+                <p>一日之計在於晨，祝您有個美好的一天</p>
+            </div>
+        </div>
+        <div class="process">
+            <h3>完成進度</h3>
+            <div class="bar_box">
+                <p>{{process}}</p>
+                <div class="bar" :style="{width: process}"></div>
+            </div>
+        </div>
+        <div class="enterTodos">
+            <input class="keyin" type="text" placeholder="有什麼計畫?" v-model="newTodo" @keyup.enter="addTodo" />
+            <button class="send" type="button" @click="addTodo">新增</button>
+        </div>
+        <div class="contain">
+            <div class="tab"><span id="all" :class="{'active':visi=='all'}" @click="visi='all'">全部({{filter.length}})</span><span id="ing" :class="{'active':visi=='ing'}" @click="visi='ing'">進行中({{remain}})</span><span id="done" :class="{'active':visi=='done'}" @click="visi='done'">完成({{done}})</span></div>
+            <div class="main">
+                <ul>
+                    <li v-for="(item,index) in filter" @dblclick="editTodo(item)">
+                        <input type="checkbox" :id="item.id" v-model="item.completed" />
+                        <label :for="item.id">{{item.time}}  
+            <sapn class="checkmark"></sapn>
+          </label><span v-if="item.id !== cacheTodo.id">{{item.title}}</span>
+                        <input type="text" v-if="item.id==cacheTodo.id" v-model="cacheTitle" @keyup.esc="cancelEdit" @keyup.enter="doneEdit(item)" />
+                        <div class="close" @click="removeTodo(index)"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="clear"><span @click="clearAll">清除所有任務</span></div>
+    </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js'></script>
+
+
+
+    <script src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>
