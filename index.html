@@ -38,13 +38,13 @@
             </div>
             <div class="main">
                 <ul>
-                    <li v-for="(item,index) in filter" @dblclick="editTodo(item)">
+                    <li v-for="(item,index) in filter">
                         <input type="checkbox" :id="item.id" v-model="item.completed" />
                         <label :for="item.id">
                             {{item.time}}
                             <sapn class="checkmark"></sapn>
                         </label>
-                        <span v-if="item.id !== cacheTodo.id">{{item.title}}</span>
+                        <span v-if="item.id !== cacheTodo.id" @dblclick="editTodo(item)">{{item.title}}</span>
                         <input type="text" v-if="item.id==cacheTodo.id" v-model="cacheTitle" @keyup.esc="cancelEdit" @keyup.enter="doneEdit(item)" />
                         <div class="close" @click="removeTodo(index)"></div>
                     </li>
