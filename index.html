@@ -46,7 +46,7 @@
                         </label>
                         <span v-if="item.id !== cacheTodo.id" @dblclick="editTodo(item)">{{item.title}}</span>
                         <input type="text" v-if="item.id==cacheTodo.id" v-model="cacheTitle" @keyup.esc="cancelEdit" @keyup.enter="doneEdit(item)" />
-                        <div class="close" @click="removeTodo(index)"></div>
+                        <div class="close" @click="removeTodo(item)"></div>
                     </li>
                 </ul>
             </div>

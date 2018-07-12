@@ -29,8 +29,15 @@ var app = new Vue({
             })
             this.newTodo = ''
         },
-        removeTodo: function(index) {
-            this.todos.splice(index, 1) //splice(起點,起點算起第N個)
+        removeTodo: function(todo) {
+            var newIndex = '';
+            var vm = this;
+            vm.todos.forEach(function(item,key){
+                if(todo.id===item.id){
+                    newIndex = key
+                }
+            })
+            this.todos.splice(newIndex,1);
         },
         editTodo: function(item) { //雙擊觸發編輯狀態(未編輯)
             this.cacheTitle = item.title
